@@ -1,7 +1,81 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body { font-family: Arial; background: #f4f4f4; margin: 0; padding: 0; }
-    header { background: #0077cc; color: white; padding: 20px; text-align: center; }
-    nav a { color: white; margin: 0 10px; text-decoration: none; }
-    .button { background: #0077cc; color: white; padding: 10px 15px; text-decoration: none; }
-    footer { background: #333; color: white; text-align: center; padding: 15px; }
-    
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Hero Section */
+#hero {
+    background: #007bff;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#hero .btn {
+    background-color: #28a745;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Featured Job Categories */
+#job-categories {
+    padding: 50px 0;
+    background: #f4f4f4;
+}
+
+#job-categories h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+}
+
+.category {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 25%;
+    text-align: center;
+}
+
+/* Testimonials */
+#testimonials {
+    padding: 50px 0;
+    background: #e9ecef;
+}
+
+#testimonials h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+}
+
+.testimonial {
+    margin: 0 20px;
+    width: 300px;
+    text-align: center;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
