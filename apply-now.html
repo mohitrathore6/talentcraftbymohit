@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><title>Apply Now</title></head><body>
+        <h1>Job Application</h1>
+        <form id="applyForm">
+            <input type="text" id="name" placeholder="Name" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="text" id="resume" placeholder="Resume Link" required />
+            <button type="submit">Apply</button>
+        </form>
+        <script>
+        document.getElementById("applyForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                resume: document.getElementById("resume").value
+            };
+            const response = await fetch("/api/apply", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
+            const result = await response.json();
+            alert(result.message);
+        });
+        </script>
+    </body></html>
