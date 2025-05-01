@@ -1,1 +1,7 @@
-body { font-family: Arial; background: #f0f0f0; }
+
+    body { font-family: Arial; background: #f4f4f4; margin: 0; padding: 0; }
+    header { background: #0077cc; color: white; padding: 20px; text-align: center; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; }
+    .button { background: #0077cc; color: white; padding: 10px 15px; text-decoration: none; }
+    footer { background: #333; color: white; text-align: center; padding: 15px; }
+    
