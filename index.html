@@ -1,58 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TalentCraftByMohit</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telentcraftbymohit</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <header>
-        <section id="hero">
-            <div class="container">
-                <h1>Welcome to TalentCraftByMohit</h1>
-                <p>Your dream job is just a click away!</p>
-                <a href="apply-now.html" class="btn">Apply Now</a>
-            </div>
-        </section>
+        <h1>Welcome to Telentcraftbymohit</h1>
+        <p>Connecting Talent with Opportunities</p>
     </header>
-
-    <section id="job-categories">
-        <div class="container">
-            <h2>Featured Job Categories</h2>
-            <div class="categories">
-                <div class="category">
-                    <h3>IT</h3>
-                    <p>Explore job opportunities in IT and tech fields</p>
-                </div>
-                <div class="category">
-                    <h3>BPO</h3>
-                    <p>Customer service roles across the globe</p>
-                </div>
-                <div class="category">
-                    <h3>Sales</h3>
-                    <p>Top sales positions with high earning potential</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials">
-        <div class="container">
-            <h2>What Our Clients Say</h2>
-            <div class="carousel">
-                <div class="testimonial">
-                    <p>"TalentCraftByMohit helped me land my dream job in just 2 weeks!"</p>
-                    <p>- John Doe, IT Developer</p>
-                </div>
-                <div class="testimonial">
-                    <p>"Thanks to TalentCraftByMohit, I got the perfect sales position."</p>
-                    <p>- Jane Smith, Sales Executive</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <main>
+        <section id="apply">
+            <h2>Job Application Form</h2>
+            <form id="jobForm">
+                <input type="text" placeholder="Full Name" required />
+                <input type="email" placeholder="Email" required />
+                <input type="file" required />
+                <button type="submit">Apply Now</button>
+            </form>
+            <p id="successMsg" style="display:none; color:green;">Application submitted successfully!</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Phone: 7489617529</p>
+            <p>Email: telentcraftbymohit@gmail.com</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Telentcraftbymohit. All rights reserved.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
