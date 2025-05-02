@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telentcraftbymohit - Job Consultancy</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    function showSuccessPopup() {
+      alert('Success! Your message has been sent.');
+    }
+
+    function loginUser(email, password) {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert('Login successful!');
+          window.location.hash = '#dashboard';
+        })
+        .catch((error) => {
+          alert('Login failed: ' + error.message);
+        });
+    }
+
+    function registerUser(email, password) {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert('Registration successful!');
+        })
+        .catch((error) => {
+          alert('Error: ' + error.message);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.querySelector('#login form');
+      if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const email = loginForm.querySelector('input[type=email]').value;
+          const password = loginForm.querySelector('input[type=password]').value;
+          loginUser(email, password);
+        });
+      }
+    });
+  </script>
+</head>
+<body class="bg-blue-50 text-gray-800 font-sans">
+  <!-- Navbar -->
+  <header class="bg-blue-700 text-white p-4 flex justify-between items-center shadow-md sticky top-0 z-50">
+    <h1 class="text-2xl font-bold">Telentcraftbymohit</h1>
+    <nav class="space-x-4 hidden md:flex">
+      <a href="#home" class="hover:underline transition">Home</a>
+      <a href="#about" class="hover:underline transition">About</a>
+      <a href="#jobs" class="hover:underline transition">Jobs</a>
+      <a href="#employers" class="hover:underline transition">For Employers</a>
+      <a href="#seekers" class="hover:underline transition">For Job Seekers</a>
+      <a href="#contact" class="hover:underline transition">Contact</a>
+      <a href="#login" class="hover:underline transition">Login</a>
+      <a href="#dashboard" class="hover:underline transition">Dashboard</a>
+    </nav>
+  </header>
+
+  <!-- [Other sections remain unchanged] -->
+
+  <!-- Login/Register Section -->
+  <section id="login" class="p-10 bg-white text-center">
+    <h2 class="text-3xl font-bold mb-6">Login / Register</h2>
+    <div class="max-w-md mx-auto bg-gray-50 p-6 rounded-lg shadow-md">
+      <form class="space-y-4">
+        <input type="email" placeholder="Email" required class="w-full p-3 border rounded" />
+        <input type="password" placeholder="Password" required class="w-full p-3 border rounded" />
+        <button type="submit" class="w-full bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Login</button>
+        <p class="text-sm mt-4">New user? <a href="#" onclick="registerUser(document.querySelector('#login input[type=email]').value, document.querySelector('#login input[type=password]').value)" class="text-blue-600 underline">Register here</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- User Dashboard Section -->
+  <section id="dashboard" class="p-10 bg-blue-100 text-center" style="display:none;">
+    <h2 class="text-3xl font-bold mb-4">User Dashboard</h2>
+    <div class="max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded shadow">📄 <strong>My Profile</strong><br> View and edit your profile details.</div>
+        <div class="bg-white p-6 rounded shadow">⭐ <strong>Saved Jobs</strong><br> Browse and manage your saved listings.</div>
+        <div class="bg-white p-6 rounded shadow">📝 <strong>Applications</strong><br> Track your job applications status.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logout Button -->
+  <button onclick="logoutUser()" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+    Logout
+  </button>
+
+  <script>
+    // Check if the user is logged in
+    firebase.auth().onAuthStateChanged((user) => {
+      const dashboard = document.querySelector('#dashboard');
+      if (user) {
+        // Show the dashboard if the user is logged in
+        dashboard.style.display = 'block';
+      } else {
+        // Redirect to login if no user is logged in
+        window.location.hash = '#login';
+      }
+    });
+
+    function logoutUser() {
+      firebase.auth().signOut()
+        .then(() => {
+          alert('Logged out successfully!');
+          window.location.hash = '#login'; // Redirect to login
+        })
+        .catch((error) => {
+          alert('Logout failed: ' + error.message);
+        });
+    }
+  </script>
+</body>
+</html>
